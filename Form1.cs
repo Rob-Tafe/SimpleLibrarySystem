@@ -147,7 +147,6 @@ namespace SimpleLibrarySystem
     // Attributes for the BookOperations class
     // End of Attributes for the BookOperations class
 
-
     public class BookOperations
     {
 
