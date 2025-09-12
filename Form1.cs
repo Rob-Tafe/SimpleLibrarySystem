@@ -10,6 +10,9 @@
  */
 
 
+using System;
+
+
 namespace SimpleLibrarySystem
 {
 
@@ -27,12 +30,109 @@ namespace SimpleLibrarySystem
     } // End of Form1 class
 
 
+    // Attributes for the LibraryMembers class
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+    public class memberIDAttribute : Attribute
+    {
+
+    }
+
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+    public class memberNameAttribute : Attribute
+    {
+
+    }
+
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+    public class memberEmailAttribute : Attribute
+    {
+
+    }
+
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+    public class memberActiveAttribute : Attribute
+    {
+
+    }
+
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+    public class memberHasBooksCheckedOutAttribute : Attribute
+    {
+
+    }
+    // End of Attributes for the LibraryMembers class
+
+
     public class LibraryMembers
     {
 
 
 
     }
+
+
+
+    // Attributes for the Books class
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+    public class bookIDAttribute : Attribute
+    {
+
+    }
+
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+    public class bookTitleAttribute : Attribute
+    {
+
+    }
+
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+    public class bookAuthorAttribute : Attribute
+    {
+
+    }
+
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+    public class bookPublicationDateAttribute : Attribute
+    {
+
+    }
+
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+    public class bookISBNAttribute : Attribute
+    {
+
+    }
+
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+    public class bookNumberOfCopiesAttribute : Attribute
+    {
+
+    }
+
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+    public class bookNumberOfAvailableCopiesAttribute : Attribute
+    {
+
+    }
+
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+    public class bookCopyTrackerAttribute : Attribute
+    {
+
+    }
+
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+    public class bookCheckedOutDateAttribute : Attribute
+    {
+
+    }
+
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+    public class bookDueDateAttribute : Attribute
+    {
+
+    }
+    // End of Attributes for the Books class
 
 
     public class Books
@@ -43,6 +143,11 @@ namespace SimpleLibrarySystem
     }
 
 
+
+    // Attributes for the BookOperations class
+    // End of Attributes for the BookOperations class
+
+
     public class BookOperations
     {
 
@@ -51,12 +156,41 @@ namespace SimpleLibrarySystem
     }
 
 
+
+    // Attributes for the LibraryDataTracking class
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+    public class allBooksListAttribute : Attribute
+    {
+
+    }
+
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+    public class allBooksBorrowedListAttribute : Attribute
+    {
+
+    }
+
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+    public class allMembersListAttribute : Attribute
+    {
+
+    }
+
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+    public class allMembersThatHaveBooksBorrowedListAttribute : Attribute
+    {
+
+    }
+    // End of Attributes for the LibraryDataTracking class
+
+
     public class LibraryDataTracking
     {
         
 
 
     }
+
 
 
 } // End of SimpleLibrarySystem namespace
