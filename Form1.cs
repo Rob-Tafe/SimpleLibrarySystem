@@ -11,7 +11,7 @@
 
 
 using System;
-
+using System.Text;
 
 namespace SimpleLibrarySystem
 {
@@ -35,31 +35,31 @@ namespace SimpleLibrarySystem
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class memberIDAttribute : Attribute
     {
-
+        string memberID = string.Empty;
     }
 
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class memberNameAttribute : Attribute
     {
-
+        string memberName = string.Empty;
     }
 
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class memberEmailAttribute : Attribute
     {
-
+        string memberEmail = string.Empty;
     }
 
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class memberActiveAttribute : Attribute
     {
-
+        Boolean memberActive;
     }
 
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class memberHasBooksCheckedOutAttribute : Attribute
     {
-
+        // List memberHasTheseBooksCheckedOut;
     }
     // End of Attributes for the LibraryMembers class
 
@@ -77,61 +77,61 @@ namespace SimpleLibrarySystem
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class bookIDAttribute : Attribute
     {
-
+        int bookID;
     }
 
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class bookTitleAttribute : Attribute
     {
-
+        string bookTitle = string.Empty;
     }
 
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class bookAuthorAttribute : Attribute
     {
-
+        string bookAuthor = string.Empty;
     }
 
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class bookPublicationDateAttribute : Attribute
     {
-
+        string bookPublicationDate = string.Empty;
     }
 
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class bookISBNAttribute : Attribute
     {
-
+        string bookISBN = string.Empty;
     }
 
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class bookNumberOfCopiesAttribute : Attribute
     {
-
+        int bookNumberOfCopies;
     }
 
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class bookNumberOfAvailableCopiesAttribute : Attribute
     {
-
+        int bookNumberOfAvailableCopies;
     }
 
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class bookCopyTrackerAttribute : Attribute
     {
-
+        // List bookCopyTracker;
     }
 
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class bookCheckedOutDateAttribute : Attribute
     {
-
+        string bookCheckedOutDate = string.Empty;
     }
 
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class bookDueDateAttribute : Attribute
     {
-
+        string bookDueDate = string.Empty;
     }
     // End of Attributes for the Books class
 
@@ -162,25 +162,25 @@ namespace SimpleLibrarySystem
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class allBooksListAttribute : Attribute
     {
-
+        // List allBooksList;
     }
 
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class allBooksBorrowedListAttribute : Attribute
     {
-
+        // List allBooksBorrowed;
     }
 
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class allMembersListAttribute : Attribute
     {
-
+        // List allMembersList;
     }
 
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class allMembersThatHaveBooksBorrowedListAttribute : Attribute
     {
-
+        // List allMembersThatHaveBooksBorrowed;
     }
     // End of Attributes for the LibraryDataTracking class
 
