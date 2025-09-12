@@ -62,7 +62,7 @@ namespace SimpleLibrarySystem
     }
     // End of Attributes for the LibraryMembers class
 
-
+    [memberID, memberName, memberEmail, memberActive, memberHasBooksCheckedOut]
     public class LibraryMembers
     {
 
@@ -134,7 +134,8 @@ namespace SimpleLibrarySystem
     }
     // End of Attributes for the Books class
 
-
+    [bookID, bookTitle, bookAuthor, bookPublicationDate, bookISBN, bookNumberOfCopies, 
+        bookNumberOfAvailableCopies, bookCopyTracker, bookCheckedOutDate, bookDueDate]
     public class Books
     {
 
@@ -182,7 +183,7 @@ namespace SimpleLibrarySystem
     }
     // End of Attributes for the LibraryDataTracking class
 
-
+    [allBooksList, allBooksBorrowedList, allMembersList, all]
     public class LibraryDataTracking
     {
         
