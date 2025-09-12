@@ -183,7 +183,7 @@ namespace SimpleLibrarySystem
     }
     // End of Attributes for the LibraryDataTracking class
 
-    [allBooksList, allBooksBorrowedList, allMembersList, all]
+    [allBooksList, allBooksBorrowedList, allMembersList, allMembersThatHaveBooksBorrowedList]
     public class LibraryDataTracking
     {
         
