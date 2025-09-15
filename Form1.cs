@@ -51,8 +51,6 @@ namespace SimpleLibrarySystem
         public string bookAuthorAttribute { get; set; }
         public string bookPublicationDate {  get; set; }
         public string bookISBN {  get; set; }
-        public int bookNumberOfCopies { get; set; }
-        public int bookNumberOfAvailableCopies { get; set; }
         public string bookCheckedOutDate { get; set; }
         public string bookDueDate { get; set; }
 
