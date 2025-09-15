@@ -13,6 +13,7 @@
 using System;
 using System.Text;
 
+
 namespace SimpleLibrarySystem
 {
 
@@ -33,6 +34,11 @@ namespace SimpleLibrarySystem
     public class LibraryMembers
     {
 
+        public string memberID {  get; set; }
+        public string memberName { get; set; }
+        public string memberEmail { get; set; }
+        public bool memberActive { get; set; }
+        public List<string> booksCheckedOut { get; set; } = new List<string>();
 
     }
 
@@ -40,7 +46,15 @@ namespace SimpleLibrarySystem
     public class Books
     {
 
-
+        public string bookIDAttribute { get; set; }
+        public string bookTitleAttribute { get; set; }
+        public string bookAuthorAttribute { get; set; }
+        public string bookPublicationDate {  get; set; }
+        public string bookISBN {  get; set; }
+        public int bookNumberOfCopies { get; set; }
+        public int bookNumberOfAvailableCopies { get; set; }
+        public string bookCheckedOutDate { get; set; }
+        public string bookDueDate { get; set; }
 
     }
 
@@ -58,8 +72,11 @@ namespace SimpleLibrarySystem
 
     public class LibraryDataTracking
     {
-        
 
+        public List<string> allBooksList { get; set; } = new List<string>();
+        public List<string> allBooksBorrowedList { get; set; } = new List<string>();
+        public List<string> allMembersList { get; set; } = new List<string>();
+        public List<string> allMembersThatHaveBooksBorrowedList { get; set; } = new List<string>();
 
     }
 
