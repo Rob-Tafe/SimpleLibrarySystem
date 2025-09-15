@@ -70,6 +70,9 @@ namespace SimpleLibrarySystem
 
     public class LibraryDataTracking
     {
+        // These variables maybe shouldn't be get/set? ******
+        public int bookNumberOfCopies { get; set; }
+        public int bookNumberOfAvailableCopies { get; set; }
 
         public List<string> allBooksList { get; set; } = new List<string>();
         public List<string> allBooksBorrowedList { get; set; } = new List<string>();
