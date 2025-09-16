@@ -1,6 +1,6 @@
 ﻿namespace SimpleLibrarySystem
 {
-    partial class Form1
+    partial class SimpleLibrarySystemForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -45,30 +45,30 @@
             // 
             LbMain.FormattingEnabled = true;
             LbMain.ItemHeight = 15;
-            LbMain.Location = new Point(160, 75);
+            LbMain.Location = new Point(130, 53);
             LbMain.Name = "LbMain";
-            LbMain.Size = new Size(300, 259);
+            LbMain.Size = new Size(360, 289);
             LbMain.TabIndex = 0;
             // 
             // TBInput
             // 
-            TBInput.Location = new Point(160, 30);
+            TBInput.Location = new Point(130, 15);
             TBInput.Name = "TBInput";
-            TBInput.Size = new Size(300, 23);
+            TBInput.Size = new Size(254, 23);
             TBInput.TabIndex = 1;
             // 
             // BtnSearch
             // 
-            BtnSearch.Location = new Point(30, 30);
+            BtnSearch.Location = new Point(390, 15);
             BtnSearch.Name = "BtnSearch";
-            BtnSearch.Size = new Size(100, 55);
+            BtnSearch.Size = new Size(100, 23);
             BtnSearch.TabIndex = 2;
             BtnSearch.Text = "Search";
             BtnSearch.UseVisualStyleBackColor = true;
             // 
             // BtnBorrow
             // 
-            BtnBorrow.Location = new Point(30, 110);
+            BtnBorrow.Location = new Point(15, 53);
             BtnBorrow.Name = "BtnBorrow";
             BtnBorrow.Size = new Size(100, 55);
             BtnBorrow.TabIndex = 3;
@@ -77,7 +77,7 @@
             // 
             // BtnReturn
             // 
-            BtnReturn.Location = new Point(30, 190);
+            BtnReturn.Location = new Point(15, 133);
             BtnReturn.Name = "BtnReturn";
             BtnReturn.Size = new Size(100, 55);
             BtnReturn.TabIndex = 4;
@@ -86,7 +86,7 @@
             // 
             // BtnCurrentlyBorrowed
             // 
-            BtnCurrentlyBorrowed.Location = new Point(30, 270);
+            BtnCurrentlyBorrowed.Location = new Point(15, 213);
             BtnCurrentlyBorrowed.Name = "BtnCurrentlyBorrowed";
             BtnCurrentlyBorrowed.Size = new Size(100, 55);
             BtnCurrentlyBorrowed.TabIndex = 5;
@@ -95,7 +95,7 @@
             // 
             // BtnAllBooks
             // 
-            BtnAllBooks.Location = new Point(490, 45);
+            BtnAllBooks.Location = new Point(505, 53);
             BtnAllBooks.Name = "BtnAllBooks";
             BtnAllBooks.Size = new Size(100, 55);
             BtnAllBooks.TabIndex = 6;
@@ -104,7 +104,7 @@
             // 
             // BtnAllBorrowedBooks
             // 
-            BtnAllBorrowedBooks.Location = new Point(490, 115);
+            BtnAllBorrowedBooks.Location = new Point(505, 123);
             BtnAllBorrowedBooks.Name = "BtnAllBorrowedBooks";
             BtnAllBorrowedBooks.Size = new Size(100, 55);
             BtnAllBorrowedBooks.TabIndex = 7;
@@ -113,7 +113,7 @@
             // 
             // BtnAllMembersList
             // 
-            BtnAllMembersList.Location = new Point(490, 190);
+            BtnAllMembersList.Location = new Point(505, 198);
             BtnAllMembersList.Name = "BtnAllMembersList";
             BtnAllMembersList.Size = new Size(100, 55);
             BtnAllMembersList.TabIndex = 8;
@@ -122,7 +122,7 @@
             // 
             // BtnAllMembersWithBorrowed
             // 
-            BtnAllMembersWithBorrowed.Location = new Point(490, 265);
+            BtnAllMembersWithBorrowed.Location = new Point(505, 273);
             BtnAllMembersWithBorrowed.Name = "BtnAllMembersWithBorrowed";
             BtnAllMembersWithBorrowed.Size = new Size(100, 70);
             BtnAllMembersWithBorrowed.TabIndex = 9;
@@ -131,17 +131,17 @@
             // 
             // TbFeedback
             // 
-            TbFeedback.Location = new Point(30, 350);
+            TbFeedback.Location = new Point(15, 357);
             TbFeedback.Name = "TbFeedback";
             TbFeedback.ReadOnly = true;
-            TbFeedback.Size = new Size(560, 23);
+            TbFeedback.Size = new Size(590, 23);
             TbFeedback.TabIndex = 10;
             // 
-            // Form1
+            // SimpleLibrarySystemForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(619, 399);
+            ClientSize = new Size(619, 396);
             Controls.Add(TbFeedback);
             Controls.Add(BtnAllMembersWithBorrowed);
             Controls.Add(BtnAllMembersList);
@@ -153,7 +153,7 @@
             Controls.Add(BtnSearch);
             Controls.Add(TBInput);
             Controls.Add(LbMain);
-            Name = "Form1";
+            Name = "SimpleLibrarySystemForm";
             Text = "Simple Library System";
             ResumeLayout(false);
             PerformLayout();
