@@ -19,6 +19,7 @@ namespace SimpleLibrarySystem
 {
 
 
+    // This is the entry class for our form.
     public partial class SimpleLibrarySystemForm : Form
     {
 
@@ -26,12 +27,14 @@ namespace SimpleLibrarySystem
         public SimpleLibrarySystemForm()
         {
             InitializeComponent();
-        } // End of Form1 method
+        } // End of SimpleLibrarySystemForm method
 
 
-    } // End of Form1 class
+    } // End of SimpleLibrarySystemForm class
 
 
+    // This is out member blueprint class. It lays out the format & data that our member
+    // objects will inherit.
     public class LibraryMembers
     {
 
@@ -56,6 +59,8 @@ namespace SimpleLibrarySystem
     } // End of LibraryMembers superclass
 
 
+    // This is our book blueprint class. It lays out the format & data that our book objects
+    // will inherit.
     public class Books
     {
 
@@ -96,22 +101,24 @@ namespace SimpleLibrarySystem
     } // End of BookOperations class
 
 
-    public class LibraryDataTracking
+    public static class LibraryDataTracking
     {
         // These variables maybe shouldn't be get/set? ******
-        public int bookNumberOfCopies { get; set; }
-        public int bookNumberOfAvailableCopies { get; set; }
+        public static int bookNumberOfCopies { get; set; }
+        public static int bookNumberOfAvailableCopies { get; set; }
 
-        public List<string> allBooksList { get; set; } = new List<string>();
-        public List<string> allBooksBorrowedList { get; set; } = new List<string>();
-        public List<string> allMembersList { get; set; } = new List<string>();
-        public List<string> allMembersThatHaveBooksBorrowedList { get; set; } = new List<string>();
+        public static List<string> allBooksList { get; set; } = new List<string>();
+        public static List<string> allBooksBorrowedList { get; set; } = new List<string>();
+        public static List<string> allMembersList { get; set; } = new List<string>();
+        public static List<string> allMembersThatHaveBooksBorrowedList { get; set; } = new List<string>();
 
     } // End of LibraryDataTracking superclass
 
 
+    // This class is responsible for populating the data that our library system will use.
     public class PopulateData
     {
+
         public void populateLibraryMembers()
         {
             LibraryMembers newMember1 = new LibraryMembers(0001, "Anna", "anna@email.com", true);
