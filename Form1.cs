@@ -28,6 +28,11 @@ namespace SimpleLibrarySystem
             InitializeComponent();
         } // End of SimpleLibrarySystemForm method
 
+        private void SimpleLibrarySystemForm_Load(object sender, EventArgs e)
+        {
+            PopulateData.populateLibraryMembers();
+            PopulateData.populateBooks();
+        }
 
     } // End of SimpleLibrarySystemForm class
 
@@ -92,7 +97,7 @@ namespace SimpleLibrarySystem
     // Attributes for the BookOperations class
     // End of Attributes for the BookOperations class
 
-    public class BookOperations
+    public static class BookOperations
     {
 
 
@@ -115,10 +120,10 @@ namespace SimpleLibrarySystem
 
 
     // This class is responsible for populating the data that our library system will use.
-    public class PopulateData
+    public static class PopulateData
     {
 
-        public void populateLibraryMembers()
+        public static void populateLibraryMembers()
         {
             LibraryMembers newMember1 = new LibraryMembers(0001, "Anna", "anna@email.com", true);
             LibraryMembers newMember2 = new LibraryMembers(0002, "Brandt", "brandt@email.com", true);
@@ -127,7 +132,7 @@ namespace SimpleLibrarySystem
             LibraryMembers newMember5 = new LibraryMembers(0005, "Eryn", "eryn@email.com", true);
         }
 
-        public void populateBooks()
+        public static void populateBooks()
         {
             Books newBook1 = new Books(1001, "The Hobbit", "J.R.R. Tolkien", "1937", "978-0-00-748729-5", "", "");
             Books newBook2 = new Books(1002, "Pro C# 10 with .NET 6", "Andrew Troelsen, Phil Japikse", "2022", "978-1-4842-7868-0", "", "");

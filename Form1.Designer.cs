@@ -155,6 +155,7 @@
             Controls.Add(LbMain);
             Name = "SimpleLibrarySystemForm";
             Text = "Simple Library System";
+            Load += SimpleLibrarySystemForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
