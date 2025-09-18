@@ -23,7 +23,6 @@ namespace SimpleLibrarySystem
     public partial class SimpleLibrarySystemForm : Form
     {
 
-
         public SimpleLibrarySystemForm()
         {
             InitializeComponent();
