@@ -101,6 +101,7 @@
             BtnAllBooks.TabIndex = 6;
             BtnAllBooks.Text = "Show All Books";
             BtnAllBooks.UseVisualStyleBackColor = true;
+            BtnAllBooks.Click += BtnAllBooks_Click;
             // 
             // BtnAllBorrowedBooks
             // 
@@ -119,6 +120,7 @@
             BtnAllMembersList.TabIndex = 8;
             BtnAllMembersList.Text = "Show All Library Members";
             BtnAllMembersList.UseVisualStyleBackColor = true;
+            BtnAllMembersList.Click += BtnAllMembersList_Click;
             // 
             // BtnAllMembersWithBorrowed
             // 
