@@ -109,6 +109,64 @@ namespace SimpleLibrarySystem
 
         } // End of BtnSearch_Click method.
 
+        // This is the method that will display all information of an object the user has
+        // selected in the listbox.
+        private void BtnInfo_Click(object sender, EventArgs e)
+        {
+
+            TbFeedback.Clear();
+
+            var selectedObject = LbMain.SelectedItem;
+
+            if (selectedObject == null)
+            {
+                TbFeedback.Text = "You must select an item.";
+                return;
+            }
+
+            LbMain.Items.Clear();
+
+            if (selectedObject is LibraryMembers member)
+            {
+                LbMain.Items.Add($"Member ID: {member.memberID}");
+                LbMain.Items.Add($"Name: {member.memberName}");
+                LbMain.Items.Add($"Email: {member.memberEmail}");
+                LbMain.Items.Add($"Active: {member.memberActive}");
+                LbMain.Items.Add("Books Checked Out:");
+                if (member.booksCheckedOut.Count > 0)
+                {
+                    foreach (var book in member.booksCheckedOut)
+                    {
+                        LbMain.Items.Add($"  - {book}");
+                    }
+                }
+                else
+                {
+                    LbMain.Items.Add("  - (No boooks checked out)");
+                }
+
+                TbFeedback.Text = $"Details for member: {member.memberName}";
+            }
+            else if (selectedObject is Books book)
+            {
+                LbMain.Items.Add($"Book ID: {book.bookID}");
+                LbMain.Items.Add($"Title: {book.bookTitle}");
+                LbMain.Items.Add($"Author: {book.bookAuthor}");
+                LbMain.Items.Add($"Publication Date: {book.bookPublicationDate}");
+                LbMain.Items.Add($"ISBN: {book.bookISBN}");
+                LbMain.Items.Add($"Checked Out Date: {book.bookCheckedOutDate}");
+                LbMain.Items.Add($"Due Date: {book.bookDueDate}");
+
+                TbFeedback.Text = $"Details for book: {book.bookTitle}";
+            }
+            else
+            {
+                LbMain.Items.Add("Unknown object type selected.");
+                TbFeedback.Text = $"Error: Selected object type not recognised.";
+            }
+
+        } // End of BtnInfo_Click method.
+
 
     } // End of SimpleLibrarySystemForm class.
 

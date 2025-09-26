@@ -70,7 +70,7 @@
             // 
             // BtnBorrow
             // 
-            BtnBorrow.Location = new Point(15, 133);
+            BtnBorrow.Location = new Point(15, 131);
             BtnBorrow.Name = "BtnBorrow";
             BtnBorrow.Size = new Size(100, 55);
             BtnBorrow.TabIndex = 3;
@@ -79,7 +79,7 @@
             // 
             // BtnReturn
             // 
-            BtnReturn.Location = new Point(15, 213);
+            BtnReturn.Location = new Point(15, 211);
             BtnReturn.Name = "BtnReturn";
             BtnReturn.Size = new Size(100, 55);
             BtnReturn.TabIndex = 4;
@@ -88,7 +88,7 @@
             // 
             // BtnCurrentlyBorrowed
             // 
-            BtnCurrentlyBorrowed.Location = new Point(15, 293);
+            BtnCurrentlyBorrowed.Location = new Point(15, 288);
             BtnCurrentlyBorrowed.Name = "BtnCurrentlyBorrowed";
             BtnCurrentlyBorrowed.Size = new Size(100, 55);
             BtnCurrentlyBorrowed.TabIndex = 5;
@@ -149,6 +149,7 @@
             BtnInfo.TabIndex = 11;
             BtnInfo.Text = "Display Info of Selected Item";
             BtnInfo.UseVisualStyleBackColor = true;
+            BtnInfo.Click += BtnInfo_Click;
             // 
             // SimpleLibrarySystemForm
             // 
