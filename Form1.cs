@@ -27,7 +27,7 @@ namespace SimpleLibrarySystem
         public SimpleLibrarySystemForm()
         {
             InitializeComponent();
-        } // End of SimpleLibrarySystemForm method
+        } // End of SimpleLibrarySystemForm method.
 
         public void SimpleLibrarySystemForm_Load(object sender, EventArgs e)
         {
@@ -82,7 +82,35 @@ namespace SimpleLibrarySystem
             TbFeedback.Text = "Currently displaying the list of all books in the library.";
         } // End of allBooksListDisplay method.
 
-    } // End of SimpleLibrarySystemForm class
+        // This is the search function that will use the value entered in the TbInput text box to
+        // search through the list of books for the entered value.
+        private void BtnSearch_Click(object sender, EventArgs e)
+        {
+
+            TbFeedback.Clear();
+
+            string searchVal = TBInput.Text;
+            bool searchValFound = false;
+            TbFeedback.Text = searchVal;
+
+            if (!string.IsNullOrEmpty(searchVal))
+            {
+                int lbIndex = LbMain.FindString(searchVal);
+
+                if (lbIndex != -1)
+                {
+                    LbMain.SetSelected(lbIndex, true);
+                }
+                else
+                {
+                    TbFeedback.Text = "Search string did not match any item in the list.";
+                }
+            }
+
+        } // End of BtnSearch_Click method.
+
+
+    } // End of SimpleLibrarySystemForm class.
 
 
     // This is out member blueprint class. It lays out the format & data that our member
@@ -98,7 +126,7 @@ namespace SimpleLibrarySystem
 
         /* This is the constructor that will allow us to create new instances
         *  of the LibraryMembers class and assign values to the variables manually
-        *  as part of the new instance declaration
+        *  as part of the new instance declaration.
         */
         public LibraryMembers(int id, string name, string email, bool active)
         {
@@ -106,7 +134,7 @@ namespace SimpleLibrarySystem
             memberName = name;
             memberEmail = email;
             memberActive = active;
-        } // End of LibraryMembers constructor
+        } // End of LibraryMembers constructor.
 
         // This is the override string that will display when we call the
         // allMembersListDisplay method.
@@ -115,10 +143,10 @@ namespace SimpleLibrarySystem
             return $"{memberName} \tID: {memberID} \t{memberEmail}";
         } // End of LibraryMembers override.
 
-    } // End of LibraryMembers superclass
+    } // End of LibraryMembers superclass.
 
 
-    // This is our book blueprint class. It lays out the format & data that our book objects
+    // This is our book blueprint class. It lays out the format & data that our book objects.
     // will inherit.
     public class Books
     {
@@ -133,7 +161,7 @@ namespace SimpleLibrarySystem
 
         /* This is the constructor that will allow us to create new instances
         *  of the Books class and assign values to the variables manually
-        *  as part of the new instance declaration
+        *  as part of the new instance declaration.
         */
         public Books(int id, string title, string author, string publication, string isbn, string checkedOutDate, string dueDate)
         {
@@ -144,7 +172,7 @@ namespace SimpleLibrarySystem
             bookISBN = isbn;
             bookCheckedOutDate = checkedOutDate;
             bookDueDate = dueDate;
-        } // End of Books constructor
+        } // End of Books constructor.
 
         //
         public override string ToString()
@@ -152,18 +180,18 @@ namespace SimpleLibrarySystem
             return $"{bookTitle} \t{bookISBN} \t(ID: {bookID})";
         }
 
-    } // End of Books superclass
+    } // End of Books superclass.
 
 
-    // Attributes for the BookOperations class
-    // End of Attributes for the BookOperations class
+    // Attributes for the BookOperations class.
+    // End of Attributes for the BookOperations class.
 
     public static class BookOperations
     {
 
         
 
-    } // End of BookOperations class
+    } // End of BookOperations class.
 
 
     public static class LibraryDataTracking
@@ -177,13 +205,14 @@ namespace SimpleLibrarySystem
         public static List<LibraryMembers> allMembersList = new List<LibraryMembers>();
         public static List<string> allMembersThatHaveBooksBorrowedList = new List<string>();
 
-    } // End of LibraryDataTracking superclass
+    } // End of LibraryDataTracking superclass.
 
 
     // This class is responsible for populating the data that our library system will use.
     public static class PopulateData
     {
 
+        // This is the method responsible for populating the LibraryMembers list with data.
         public static void populateLibraryMembers()
         {
             LibraryMembers newMember1 = new LibraryMembers(0001, "Anna", "anna@email.com", true);
@@ -196,8 +225,9 @@ namespace SimpleLibrarySystem
             LibraryDataTracking.allMembersList.Add(newMember4);
             LibraryMembers newMember5 = new LibraryMembers(0005, "Eryn", "eryn@email.com", true);
             LibraryDataTracking.allMembersList.Add(newMember5);
-        }
+        } // End of populateLibraryMembers method.
 
+        // This method is responsible for populating the Books list with data.
         public static void populateBooks()
         {
             Books newBook1 = new Books(1001, "The Hobbit", "J.R.R. Tolkien", "1937", "978-0-00-748729-5", "", "");
@@ -213,9 +243,9 @@ namespace SimpleLibrarySystem
             Books newBook6 = new Books(1006, "The Art of War", "Sun Tzu", "2020", "978-1-78404-202-8", "", "");
             LibraryDataTracking.allBooksList.Add(newBook6);
 
-        }
+        } // End of populateBooks method.
 
-    } // End of PopulateData class
+    } // End of PopulateData class.
 
 
-} // End of SimpleLibrarySystem namespace
+} // End of SimpleLibrarySystem namespace.
