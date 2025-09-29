@@ -24,6 +24,8 @@ namespace SimpleLibrarySystem
     public partial class SimpleLibrarySystemForm : Form
     {
 
+
+        // This method initialises the form.
         public SimpleLibrarySystemForm()
         {
             InitializeComponent();
@@ -35,6 +37,55 @@ namespace SimpleLibrarySystem
             PopulateData.populateBooks();
             TbFeedback.Text = "Data populated!";
         }
+
+
+        // This variable indicates which library member is currently logged in, and who
+        // all the methods will interact with.
+        LibraryMembers currentUser;
+        // End of login/out controller variables.
+
+        // This method is responsible for calling the login/logout methods.
+        private void BtnLogInOut_Click(object sender, EventArgs e)
+        {
+
+            userLogInOut();
+
+        } // End of BtnLogInOut_Click method.
+
+        // This method is responsible for logging in a selected user, or logging out the
+        // current user.
+        public void userLogInOut()
+        {
+            if (LbMain.SelectedItem is LibraryMembers logOnOffUser)
+            {
+                currentUser = logOnOffUser;
+                TbFeedback.Text = $"{logOnOffUser.memberName} logged in!";
+            }
+            else
+            {
+                TbFeedback.Text = $"Error, {LbMain.SelectedItem} is not a valid user.";
+            }
+        } // End of userLogin method.
+
+
+        // This method checks if there is a user logged in and returns a true boolean if 
+        // there is a user logged in, and returns false if there isn't a user logged in.
+        public Boolean loggedInUserCheck()
+        {
+            bool userLoggedIn = false;
+
+            if (currentUser == null)
+            {
+                TbFeedback.Text = "No user currently logged in.";
+                return userLoggedIn = false;
+            }
+            else
+            {
+                return userLoggedIn = true;
+            }
+        } // End of loggedInUserCheck method.
+
+
 
         // This method calls the allMembersListDisplay method when the user clicks
         // the "Show All Library Members" button.
@@ -169,30 +220,42 @@ namespace SimpleLibrarySystem
 
         private void BtnBorrow_Click(object sender, EventArgs e)
         {
-
-            if (LbMain.SelectedItem is Books book)
+            if (currentUser != null)
             {
-
-                if (book.bookCheckedOutDate == null || book.bookCheckedOutDate == string.Empty)
+                if (LbMain.SelectedItem is Books book)
                 {
-                    book.bookCheckedOutDate = $"{DateOnly.FromDateTime(DateTime.Now)}";
-                    book.bookDueDate = $"{DateOnly.FromDateTime(DateTime.Now.AddDays(14))}";
-                    LibraryDataTracking.allBooksBorrowedList.Add(book);
+
+                    if (book.bookCheckedOutDate == null || book.bookCheckedOutDate == string.Empty)
+                    {
+                        book.bookCheckedOutDate = $"{DateOnly.FromDateTime(DateTime.Now)}";
+                        book.bookDueDate = $"{DateOnly.FromDateTime(DateTime.Now.AddDays(14))}";
+                        LibraryDataTracking.allBooksBorrowedList.Add(book);
+                        currentUser.booksCheckedOut.Add(book);
+                        TbFeedback.Text = $"{currentUser.memberName} has borrowed {book.bookTitle} successfully! Due date: {book.bookDueDate}";
+                    }
+                    else
+                    {
+                        TbFeedback.Text = "You cannot borrow this book presently. Selected book is already checked out.";
+                    }
+
                 }
                 else
                 {
-                    TbFeedback.Text = "You cannot borrow this book presently. Selected book is already checked out.";
+                    TbFeedback.Text = "Selected item is not a book.";
                 }
-
             }
             else
             {
-                TbFeedback.Text = "Selected item is not a book.";
+                TbFeedback.Text = "You must be logged in to borrow a book.";
+                return;
             }
+
+
 
         } // End of BtnBorrow_Click method.
 
-
+        // This method calls the allBooksBorrowedListDisplay method when the 'Show All Borrowed Books' button is 
+        // clicked.
         private void BtnAllBorrowedBooks_Click(object sender, EventArgs e)
         {
 
@@ -200,10 +263,12 @@ namespace SimpleLibrarySystem
 
         } // End of BtnAllBorrowedBooks_Click method.
 
-
+        // This is the method responsible for displaying the list of borrowed books.
         public void allBooksBorrowedListDisplay()
         {
+
             LbMain.Items.Clear();
+
             if (LibraryDataTracking.allBooksBorrowedList != null && LibraryDataTracking.allBooksBorrowedList.Count != 0)
             {
                 TbFeedback.Text = "Currently displaying the list of all books in the library.";
@@ -220,6 +285,75 @@ namespace SimpleLibrarySystem
 
         } // End of allBooksBorrowedListDisplay method.
 
+        // This method will call the userCurrentBorrowedBooksListDisplay method when the
+        // user clicks the "My Currently Borrowed Books" button.
+        private void BtnCurrentlyBorrowed_Click(object sender, EventArgs e)
+        {
+
+            userCurrentBorrowedBooksListDisplay();
+
+        } // End of BtnCurrentlyBorrowed_Click method.
+
+        // This method is responsible for displaying the current user's borrowed books
+        // in the LbMain listbox.
+        public void userCurrentBorrowedBooksListDisplay()
+        {
+
+            if (loggedInUserCheck())
+            {
+                LbMain.Items.Clear();
+
+                if (currentUser.booksCheckedOut != null && currentUser.booksCheckedOut.Count > 0)
+                {
+                    foreach (var booksCheckedOut in currentUser.booksCheckedOut)
+                    {
+                        LbMain.Items.Add(booksCheckedOut);
+                    }
+                    TbFeedback.Text = $"These are the books that {currentUser.memberName} has currently borrowed.";
+                }
+                else
+                {
+                    TbFeedback.Text = $"{currentUser.memberName} has no borrowed books currently.";
+                    return;
+                }
+            }
+            else
+            {
+                TbFeedback.Text = "No user currently logged in.";
+                return;
+            }
+
+
+        } // End of userCurrentBorrowedBooksListDisplay method.
+
+
+        // This method 
+        private void BtnReturn_Click(object sender, EventArgs e)
+        {
+
+            returnBorrowedBook();
+
+        } // End of BtnReturn_Click method.
+
+        // This method is responsible for 
+        public void returnBorrowedBook()
+        {
+
+            if (loggedInUserCheck())
+            {
+
+
+
+            }
+            else
+            {
+                TbFeedback.Text = "No user currently logged in.";
+                return;
+            }
+
+        } // End of returnBorrowedBook method.
+
+
     } // End of SimpleLibrarySystemForm class.
 
 
@@ -232,7 +366,7 @@ namespace SimpleLibrarySystem
         public string memberName { get; set; }
         public string memberEmail { get; set; }
         public bool memberActive { get; set; }
-        public List<string> booksCheckedOut { get; set; } = new List<string>();
+        public List<Books> booksCheckedOut { get; set; } = new List<Books>();
 
         /* This is the constructor that will allow us to create new instances
         *  of the LibraryMembers class and assign values to the variables manually

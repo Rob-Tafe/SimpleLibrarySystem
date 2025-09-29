@@ -40,6 +40,7 @@
             BtnAllMembersWithBorrowed = new Button();
             TbFeedback = new TextBox();
             BtnInfo = new Button();
+            BtnLogInOut = new Button();
             SuspendLayout();
             // 
             // LbMain
@@ -86,6 +87,7 @@
             BtnReturn.TabIndex = 4;
             BtnReturn.Text = "Return Book";
             BtnReturn.UseVisualStyleBackColor = true;
+            BtnReturn.Click += BtnReturn_Click;
             // 
             // BtnCurrentlyBorrowed
             // 
@@ -95,10 +97,11 @@
             BtnCurrentlyBorrowed.TabIndex = 5;
             BtnCurrentlyBorrowed.Text = "My Currently Borrowed Books";
             BtnCurrentlyBorrowed.UseVisualStyleBackColor = true;
+            BtnCurrentlyBorrowed.Click += BtnCurrentlyBorrowed_Click;
             // 
             // BtnAllBooks
             // 
-            BtnAllBooks.Location = new Point(505, 53);
+            BtnAllBooks.Location = new Point(505, 125);
             BtnAllBooks.Name = "BtnAllBooks";
             BtnAllBooks.Size = new Size(100, 55);
             BtnAllBooks.TabIndex = 6;
@@ -108,7 +111,7 @@
             // 
             // BtnAllBorrowedBooks
             // 
-            BtnAllBorrowedBooks.Location = new Point(505, 123);
+            BtnAllBorrowedBooks.Location = new Point(505, 201);
             BtnAllBorrowedBooks.Name = "BtnAllBorrowedBooks";
             BtnAllBorrowedBooks.Size = new Size(100, 55);
             BtnAllBorrowedBooks.TabIndex = 7;
@@ -118,7 +121,7 @@
             // 
             // BtnAllMembersList
             // 
-            BtnAllMembersList.Location = new Point(505, 198);
+            BtnAllMembersList.Location = new Point(505, 53);
             BtnAllMembersList.Name = "BtnAllMembersList";
             BtnAllMembersList.Size = new Size(100, 55);
             BtnAllMembersList.TabIndex = 8;
@@ -153,11 +156,22 @@
             BtnInfo.UseVisualStyleBackColor = true;
             BtnInfo.Click += BtnInfo_Click;
             // 
+            // BtnLogInOut
+            // 
+            BtnLogInOut.Location = new Point(505, 15);
+            BtnLogInOut.Name = "BtnLogInOut";
+            BtnLogInOut.Size = new Size(100, 23);
+            BtnLogInOut.TabIndex = 12;
+            BtnLogInOut.Text = "Login / Logout";
+            BtnLogInOut.UseVisualStyleBackColor = true;
+            BtnLogInOut.Click += BtnLogInOut_Click;
+            // 
             // SimpleLibrarySystemForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(619, 396);
+            Controls.Add(BtnLogInOut);
             Controls.Add(BtnInfo);
             Controls.Add(TbFeedback);
             Controls.Add(BtnAllMembersWithBorrowed);
@@ -191,5 +205,6 @@
         private Button BtnAllMembersWithBorrowed;
         private TextBox TbFeedback;
         private Button BtnInfo;
+        private Button BtnLogInOut;
     }
 }
