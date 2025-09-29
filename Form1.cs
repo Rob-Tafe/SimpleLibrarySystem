@@ -192,6 +192,35 @@ namespace SimpleLibrarySystem
 
         } // End of BtnBorrow_Click method.
 
+
+        private void BtnAllBorrowedBooks_Click(object sender, EventArgs e)
+        {
+
+            allBooksBorrowedListDisplay();
+
+        } // End of BtnAllBorrowedBooks_Click method.
+
+
+        public void allBooksBorrowedListDisplay()
+        {
+            LbMain.Items.Clear();
+
+            if (LibraryDataTracking.allBooksBorrowedList != null && LibraryDataTracking.allBooksBorrowedList.Count != 0)
+            {
+                TbFeedback.Text = "Currently displaying the list of all books in the library.";
+
+                foreach (var borrowedBook in LibraryDataTracking.allBooksBorrowedList)
+                {
+                    LbMain.Items.Add(borrowedBook);
+                }
+            }
+            else
+            {
+                TbFeedback.Text = "No books currently borrowed.";
+            }
+
+        } // End of allBooksBorrowedListDisplay method.
+
     } // End of SimpleLibrarySystemForm class.
 
 
