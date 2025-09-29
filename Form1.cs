@@ -204,7 +204,6 @@ namespace SimpleLibrarySystem
         public void allBooksBorrowedListDisplay()
         {
             LbMain.Items.Clear();
-
             if (LibraryDataTracking.allBooksBorrowedList != null && LibraryDataTracking.allBooksBorrowedList.Count != 0)
             {
                 TbFeedback.Text = "Currently displaying the list of all books in the library.";
