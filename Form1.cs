@@ -167,6 +167,30 @@ namespace SimpleLibrarySystem
 
         } // End of BtnInfo_Click method.
 
+        private void BtnBorrow_Click(object sender, EventArgs e)
+        {
+
+            if (LbMain.SelectedItem is Books book)
+            {
+
+                if (book.bookCheckedOutDate == null || book.bookCheckedOutDate == string.Empty)
+                {
+                    book.bookCheckedOutDate = $"{DateOnly.FromDateTime(DateTime.Now)}";
+                    book.bookDueDate = $"{DateOnly.FromDateTime(DateTime.Now.AddDays(14))}";
+                    LibraryDataTracking.allBooksBorrowedList.Add(book);
+                }
+                else
+                {
+                    TbFeedback.Text = "You cannot borrow this book presently. Selected book is already checked out.";
+                }
+
+            }
+            else
+            {
+                TbFeedback.Text = "Selected item is not a book.";
+            }
+
+        } // End of BtnBorrow_Click method.
 
     } // End of SimpleLibrarySystemForm class.
 
@@ -259,7 +283,7 @@ namespace SimpleLibrarySystem
         public static int bookNumberOfAvailableCopies { get; set; }
 
         public static List<Books> allBooksList = new List<Books>();
-        public static List<string> allBooksBorrowedList = new List<string>();
+        public static List<Books> allBooksBorrowedList = new List<Books>();
         public static List<LibraryMembers> allMembersList = new List<LibraryMembers>();
         public static List<string> allMembersThatHaveBooksBorrowedList = new List<string>();
 

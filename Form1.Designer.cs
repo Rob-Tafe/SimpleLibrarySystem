@@ -76,6 +76,7 @@
             BtnBorrow.TabIndex = 3;
             BtnBorrow.Text = "Borrow Book";
             BtnBorrow.UseVisualStyleBackColor = true;
+            BtnBorrow.Click += BtnBorrow_Click;
             // 
             // BtnReturn
             // 
