@@ -188,12 +188,12 @@ namespace SimpleLibrarySystem
                 {
                     foreach (var book in member.booksCheckedOut)
                     {
-                        LbMain.Items.Add($"  - {book}");
+                        LbMain.Items.Add($"  - {book.bookTitle}, due: {book.bookDueDate}");
                     }
                 }
                 else
                 {
-                    LbMain.Items.Add("  - (No boooks checked out)");
+                    LbMain.Items.Add("  - (No books checked out)");
                 }
 
                 TbFeedback.Text = $"Details for member: {member.memberName}";
@@ -231,6 +231,7 @@ namespace SimpleLibrarySystem
                         book.bookDueDate = $"{DateOnly.FromDateTime(DateTime.Now.AddDays(14))}";
                         LibraryDataTracking.allBooksBorrowedList.Add(book);
                         currentUser.booksCheckedOut.Add(book);
+                        userCurrentBorrowedBooksListDisplay();
                         TbFeedback.Text = $"{currentUser.memberName} has borrowed {book.bookTitle} successfully! Due date: {book.bookDueDate}";
                     }
                     else
@@ -339,9 +340,35 @@ namespace SimpleLibrarySystem
 
             if (loggedInUserCheck())
             {
-
-
-
+                if (currentUser.booksCheckedOut.Count > 0)
+                {
+                    if (LbMain.SelectedItem is Books returnCandidate)
+                    {
+                        if (currentUser.booksCheckedOut.Contains(returnCandidate))
+                        {
+                            currentUser.booksCheckedOut.Remove(returnCandidate);
+                            LibraryDataTracking.allBooksBorrowedList.Remove(returnCandidate);
+                            returnCandidate.bookCheckedOutDate = "";
+                            returnCandidate.bookDueDate = "";
+                            userCurrentBorrowedBooksListDisplay();
+                            TbFeedback.Text = $"{returnCandidate.bookTitle} has been returned successfully!";
+                        }
+                        else
+                        {
+                            TbFeedback.Text = $"{currentUser.memberName} does not currently have {returnCandidate.bookTitle} checked out.";
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        TbFeedback.Text = "Error, please select a book to return.";
+                    }
+                }
+                else
+                {
+                    TbFeedback.Text = $"{currentUser.memberName} has no borrowed books to return.";
+                    return;
+                }
             }
             else
             {
@@ -353,6 +380,7 @@ namespace SimpleLibrarySystem
 
 
     } // End of SimpleLibrarySystemForm class.
+
 
     // This is out member blueprint class. It lays out the format & data that our member
     // objects will inherit.
