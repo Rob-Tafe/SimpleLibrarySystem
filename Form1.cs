@@ -250,8 +250,6 @@ namespace SimpleLibrarySystem
                 return;
             }
 
-
-
         } // End of BtnBorrow_Click method.
 
         // This method calls the allBooksBorrowedListDisplay method when the 'Show All Borrowed Books' button is 
@@ -355,7 +353,6 @@ namespace SimpleLibrarySystem
 
 
     } // End of SimpleLibrarySystemForm class.
-
 
     // This is out member blueprint class. It lays out the format & data that our member
     // objects will inherit.
