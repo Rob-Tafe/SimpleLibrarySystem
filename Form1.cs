@@ -48,9 +48,7 @@ namespace SimpleLibrarySystem
         // This method is responsible for calling the login/logout methods.
         private void BtnLogInOut_Click(object sender, EventArgs e)
         {
-
             userLogInOut();
-
         } // End of BtnLogInOut_Click method.
 
         // This method is responsible for logging in a selected user, or logging out the
@@ -85,8 +83,6 @@ namespace SimpleLibrarySystem
                 return userLoggedIn = true;
             }
         } // End of loggedInUserCheck method.
-
-
 
         // This method calls the allMembersListDisplay method when the user clicks
         // the "Show All Library Members" button.
