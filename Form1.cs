@@ -140,23 +140,47 @@ namespace SimpleLibrarySystem
         {
 
             TbFeedback.Clear();
+            LbMain.Items.Clear();
 
-            string searchVal = TBInput.Text;
+            string searchVal = TBInput.Text.ToLower().Trim();
             bool searchValFound = false;
             TbFeedback.Text = searchVal;
 
-            if (!string.IsNullOrEmpty(searchVal))
+            // This foreach statement searches through the library book list
+            foreach (Books book in LibraryDataTracking.allBooksList)
             {
-                int lbIndex = LbMain.FindString(searchVal);
+                if (
+                    book.bookTitle.ToLower().Contains(searchVal) ||
+                    book.bookAuthor.ToLower().Contains(searchVal) ||
+                    book.bookISBN.ToLower().Contains(searchVal) ||
+                    book.bookID.ToString().Contains(searchVal)
+                )
+                {
+                    LbMain.Items.Add(book);
+                    searchValFound = true;
+                }
+            }
 
-                if (lbIndex != -1)
+            foreach (LibraryMembers member in LibraryDataTracking.allMembersList)
+            {
+                if (
+                    member.memberName.ToLower().Contains(searchVal) ||
+                    member.memberEmail.ToLower().Contains(searchVal) ||
+                    member.memberID.ToString().Contains(searchVal)
+                )
                 {
-                    LbMain.SetSelected(lbIndex, true);
+                    LbMain.Items.Add(member);
+                    searchValFound = true;
                 }
-                else
-                {
-                    TbFeedback.Text = "Search string did not match any item in the list.";
-                }
+            }
+
+            if (!searchValFound)
+            {
+                TbFeedback.Text = "No match found.";
+            }
+            else
+            {
+                TbFeedback.Text = $"Search results for: {searchVal}";
             }
 
         } // End of BtnSearch_Click method.
@@ -225,19 +249,25 @@ namespace SimpleLibrarySystem
             {
                 if (LbMain.SelectedItem is Books book)
                 {
-
-                    if (book.bookCheckedOutDate == null || book.bookCheckedOutDate == string.Empty)
+                    if (currentUser.booksCheckedOut.Count < 3)
                     {
-                        book.bookCheckedOutDate = $"{DateOnly.FromDateTime(DateTime.Now)}";
-                        book.bookDueDate = $"{DateOnly.FromDateTime(DateTime.Now.AddDays(14))}";
-                        LibraryDataTracking.allBooksBorrowedList.Add(book);
-                        currentUser.booksCheckedOut.Add(book);
-                        userCurrentBorrowedBooksListDisplay();
-                        TbFeedback.Text = $"{currentUser.memberName} has borrowed {book.bookTitle} successfully! Due date: {book.bookDueDate}";
+                        if (book.bookCheckedOutDate == null || book.bookCheckedOutDate == string.Empty)
+                        {
+                            book.bookCheckedOutDate = $"{DateOnly.FromDateTime(DateTime.Now)}";
+                            book.bookDueDate = $"{DateOnly.FromDateTime(DateTime.Now.AddDays(14))}";
+                            LibraryDataTracking.allBooksBorrowedList.Add(book);
+                            currentUser.booksCheckedOut.Add(book);
+                            userCurrentBorrowedBooksListDisplay();
+                            TbFeedback.Text = $"{currentUser.memberName} has borrowed {book.bookTitle} successfully! Due date: {book.bookDueDate}";
+                        }
+                        else
+                        {
+                            TbFeedback.Text = "You cannot borrow this book presently. Selected book is already checked out.";
+                        }
                     }
                     else
                     {
-                        TbFeedback.Text = "You cannot borrow this book presently. Selected book is already checked out.";
+                        TbFeedback.Text = "Error: Unable to borrow book. You can only borrow a maximum of three books at a time.";
                     }
 
                 }
