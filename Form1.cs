@@ -108,6 +108,7 @@ namespace SimpleLibrarySystem
                     LbMain.Items.Add(member);
                 }
             }
+
             TbFeedback.Text = "Currently displaying the list of library members.";
         } // End of allMembersListDisplay method.
 
@@ -228,6 +229,7 @@ namespace SimpleLibrarySystem
                 LbMain.Items.Add($"ISBN: {book.bookISBN}");
                 LbMain.Items.Add($"Checked Out Date: {book.bookCheckedOutDate}");
                 LbMain.Items.Add($"Due Date: {book.bookDueDate}");
+                LbMain.Items.Add($"Checked out by: {book.bookBorrowedBy}");
 
                 TbFeedback.Text = $"Details for book: {book.bookTitle}";
             }
@@ -252,6 +254,7 @@ namespace SimpleLibrarySystem
                             book.bookDueDate = $"{DateOnly.FromDateTime(DateTime.Now.AddDays(14))}";
                             LibraryDataTracking.allBooksBorrowedList.Add(book);
                             currentUser.booksCheckedOut.Add(book);
+                            book.bookBorrowedBy = currentUser;
                             userCurrentBorrowedBooksListDisplay();
                             TbFeedback.Text = $"{currentUser.memberName} has borrowed {book.bookTitle} successfully! Due date: {book.bookDueDate}";
                         }
@@ -296,7 +299,7 @@ namespace SimpleLibrarySystem
 
                 foreach (var borrowedBook in LibraryDataTracking.allBooksBorrowedList)
                 {
-                    LbMain.Items.Add(borrowedBook);
+                    LbMain.Items.Add($"{borrowedBook.bookTitle} - Borrowed by: {borrowedBook.bookBorrowedBy}, Due: {borrowedBook.bookDueDate}");
                 }
             }
             else
@@ -342,13 +345,14 @@ namespace SimpleLibrarySystem
         } // End of userCurrentBorrowedBooksListDisplay method.
 
 
-        // This method 
+        // This method is responsible for calling the returnBorrowedBook method, which allows a user
+        // to return a book they have previously borrowed.
         private void BtnReturn_Click(object sender, EventArgs e)
         {
             returnBorrowedBook();
         } // End of BtnReturn_Click method.
 
-        // This method is responsible for 
+        // This method allows a library member to return a previously borrowed book to the library system.
         public void returnBorrowedBook()
         {
             if (loggedInUserCheck())
@@ -363,6 +367,7 @@ namespace SimpleLibrarySystem
                             LibraryDataTracking.allBooksBorrowedList.Remove(returnCandidate);
                             returnCandidate.bookCheckedOutDate = "";
                             returnCandidate.bookDueDate = "";
+                            returnCandidate.bookBorrowedBy = "";
                             userCurrentBorrowedBooksListDisplay();
                             TbFeedback.Text = $"{returnCandidate.bookTitle} has been returned successfully!";
                         }
@@ -391,13 +396,15 @@ namespace SimpleLibrarySystem
             }
         } // End of returnBorrowedBook method.
 
-        // This method is responsible for 
+        // This method is responsible for calling the ShowAllMembersWithBorrowedBooksList method,
+        // which will display a list of all users with borrowed books.
         private void BtnAllMembersWithBorrowed_Click(object sender, EventArgs e)
         {
             ShowAllMembersWithBorrowedBooksList();
         } // End of BtnAllMembersWithBorrowed_Click method.
 
-        //
+        // This method will print a list of all library members that have currently borrowed books
+        // to the LbMain listbox.
         public void ShowAllMembersWithBorrowedBooksList()
         {
             LbMain.Items.Clear();
@@ -406,14 +413,11 @@ namespace SimpleLibrarySystem
             {
                 if (member.booksCheckedOut.Count > 0)
                 {
-                    string bookTitles = "";
+                    LbMain.Items.Add(member.memberName);
 
-                    foreach (Books book  in member.booksCheckedOut)
+                    foreach (Books book in member.booksCheckedOut)
                     {
-                        if (bookTitles != "")
-                        {
-                            bookTitles += ", ";
-                        }
+                        LbMain.Items.Add($"  - {book.bookTitle} (Due: {book.bookDueDate})");
                     }
                 }
             }
@@ -466,6 +470,7 @@ namespace SimpleLibrarySystem
         public string bookISBN {  get; set; }
         public string bookCheckedOutDate { get; set; }
         public string bookDueDate { get; set; }
+        public object bookBorrowedBy { get; set; }
 
         /* This is the constructor that will allow us to create new instances
         *  of the Books class and assign values to the variables manually
@@ -482,11 +487,12 @@ namespace SimpleLibrarySystem
             bookDueDate = dueDate;
         } // End of Books constructor.
 
-        //
+        // This is the override string that will display when something wants to display the object
+        // instead of one of the object's elements.
         public override string ToString()
         {
             return $"{bookTitle} \t{bookISBN} \t(ID: {bookID})";
-        }
+        } // End of override string.
 
     } // End of Books superclass.
 
