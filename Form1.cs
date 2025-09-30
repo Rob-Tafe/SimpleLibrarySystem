@@ -108,13 +108,15 @@ namespace SimpleLibrarySystem
             TbFeedback.Text = "Currently displaying the list of library members.";
         } // End of allMembersListDisplay method.
 
-        // 
+        // This method is responsible for calling the allBooksListDisplay method, which shows the
+        // user a list of all the books in the library system.
         private void BtnAllBooks_Click(object sender, EventArgs e)
         {
             allBooksListDisplay();
         } // End of BtnAllBooks_Click method.
 
-        // 
+        // This method will display a complete list of books contained in the library system
+        // in the LbMain listbox.
         public void allBooksListDisplay()
         {
             LbMain.Items.Clear();
@@ -417,6 +419,8 @@ namespace SimpleLibrarySystem
                     }
                 }
             }
+
+            TbFeedback.Text = "No members are currently borrowing any books.";
         } // End of ShowAllMembersWithBorrowedBooksList method.
 
 
