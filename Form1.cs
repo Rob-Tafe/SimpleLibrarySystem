@@ -31,12 +31,13 @@ namespace SimpleLibrarySystem
             InitializeComponent();
         } // End of SimpleLibrarySystemForm method.
 
+        // This method is responsible for populating the library data.
         public void SimpleLibrarySystemForm_Load(object sender, EventArgs e)
         {
             PopulateData.populateLibraryMembers();
             PopulateData.populateBooks();
             TbFeedback.Text = "Data populated!";
-        }
+        } // End of SimpleLibrarySystemForm_Load method.
 
 
         // This variable indicates which library member is currently logged in, and who
@@ -362,6 +363,7 @@ namespace SimpleLibrarySystem
                     else
                     {
                         TbFeedback.Text = "Error, please select a book to return.";
+                        return;
                     }
                 }
                 else
@@ -377,6 +379,40 @@ namespace SimpleLibrarySystem
             }
 
         } // End of returnBorrowedBook method.
+
+        // This method is responsible for 
+        private void BtnAllMembersWithBorrowed_Click(object sender, EventArgs e)
+        {
+
+            ShowAllMembersWithBorrowedBooksList();
+
+        } // End of BtnAllMembersWithBorrowed_Click method.
+
+        //
+        public void ShowAllMembersWithBorrowedBooksList()
+        {
+            LbMain.Items.Clear();
+
+            foreach (LibraryMembers member in LibraryDataTracking.allMembersList)
+            {
+                if (member.booksCheckedOut.Count > 0)
+                {
+                    string bookTitles = "";
+
+                    foreach (Books book  in member.booksCheckedOut)
+                    {
+                        if (bookTitles != "")
+                        {
+                            bookTitles += ", ";
+                        }
+                        bookTitles += book.bookTitle;
+                    }
+
+                    LbMain.Items.Add(member.memberName + " - " + bookTitles);
+                }
+            }
+
+        } // End of ShowAllMembersWithBorrowedBooksList method.
 
 
     } // End of SimpleLibrarySystemForm class.
@@ -472,7 +508,7 @@ namespace SimpleLibrarySystem
         public static List<Books> allBooksList = new List<Books>();
         public static List<Books> allBooksBorrowedList = new List<Books>();
         public static List<LibraryMembers> allMembersList = new List<LibraryMembers>();
-        public static List<string> allMembersThatHaveBooksBorrowedList = new List<string>();
+        public static List<LibraryMembers> allMembersThatHaveBooksBorrowedList = new List<LibraryMembers>();
 
     } // End of LibraryDataTracking superclass.
 

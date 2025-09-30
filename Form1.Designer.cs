@@ -137,6 +137,7 @@
             BtnAllMembersWithBorrowed.TabIndex = 9;
             BtnAllMembersWithBorrowed.Text = "Show All Members With Borrowed Books";
             BtnAllMembersWithBorrowed.UseVisualStyleBackColor = true;
+            BtnAllMembersWithBorrowed.Click += BtnAllMembersWithBorrowed_Click;
             // 
             // TbFeedback
             // 
