@@ -353,7 +353,6 @@ namespace SimpleLibrarySystem
                 return;
             }
 
-
         } // End of userCurrentBorrowedBooksListDisplay method.
 
 
@@ -449,7 +448,6 @@ namespace SimpleLibrarySystem
     // objects will inherit.
     public class LibraryMembers
     {
-
         public int memberID {  get; set; }
         public string memberName { get; set; }
         public string memberEmail { get; set; }
@@ -482,7 +480,6 @@ namespace SimpleLibrarySystem
     // will inherit.
     public class Books
     {
-
         public int bookID { get; set; }
         public string bookTitle { get; set; }
         public string bookAuthor { get; set; }
@@ -517,15 +514,10 @@ namespace SimpleLibrarySystem
 
     public static class LibraryDataTracking
     {
-        // These variables maybe shouldn't be get/set? ******
-        public static int bookNumberOfCopies { get; set; }
-        public static int bookNumberOfAvailableCopies { get; set; }
-
         public static List<Books> allBooksList = new List<Books>();
         public static List<Books> allBooksBorrowedList = new List<Books>();
         public static List<LibraryMembers> allMembersList = new List<LibraryMembers>();
         public static List<LibraryMembers> allMembersThatHaveBooksBorrowedList = new List<LibraryMembers>();
-
     } // End of LibraryDataTracking superclass.
 
 
@@ -563,7 +555,6 @@ namespace SimpleLibrarySystem
             LibraryDataTracking.allBooksList.Add(newBook5);
             Books newBook6 = new Books(1006, "The Art of War", "Sun Tzu", "2020", "978-1-78404-202-8", "", "");
             LibraryDataTracking.allBooksList.Add(newBook6);
-
         } // End of populateBooks method.
 
     } // End of PopulateData class.
