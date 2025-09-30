@@ -435,10 +435,7 @@ namespace SimpleLibrarySystem
                         {
                             bookTitles += ", ";
                         }
-                        bookTitles += book.bookTitle;
                     }
-
-                    LbMain.Items.Add(member.memberName + " - " + bookTitles);
                 }
             }
 
@@ -516,17 +513,6 @@ namespace SimpleLibrarySystem
         }
 
     } // End of Books superclass.
-
-
-    // Attributes for the BookOperations class.
-    // End of Attributes for the BookOperations class.
-
-    public static class BookOperations
-    {
-
-        
-
-    } // End of BookOperations class.
 
 
     public static class LibraryDataTracking
