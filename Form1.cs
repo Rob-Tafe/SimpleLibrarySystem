@@ -108,7 +108,6 @@ namespace SimpleLibrarySystem
                     LbMain.Items.Add(member);
                 }
             }
-
             TbFeedback.Text = "Currently displaying the list of library members.";
         } // End of allMembersListDisplay method.
 
@@ -138,7 +137,6 @@ namespace SimpleLibrarySystem
         // search through the list of books for the entered value.
         private void BtnSearch_Click(object sender, EventArgs e)
         {
-
             TbFeedback.Clear();
             LbMain.Items.Clear();
 
@@ -182,14 +180,12 @@ namespace SimpleLibrarySystem
             {
                 TbFeedback.Text = $"Search results for: {searchVal}";
             }
-
         } // End of BtnSearch_Click method.
 
         // This is the method that will display all information of an object the user has
         // selected in the listbox.
         private void BtnInfo_Click(object sender, EventArgs e)
         {
-
             TbFeedback.Clear();
 
             var selectedObject = LbMain.SelectedItem;
@@ -240,7 +236,6 @@ namespace SimpleLibrarySystem
                 LbMain.Items.Add("Unknown object type selected.");
                 TbFeedback.Text = $"Error: Selected object type not recognised.";
             }
-
         } // End of BtnInfo_Click method.
 
         private void BtnBorrow_Click(object sender, EventArgs e)
@@ -281,22 +276,18 @@ namespace SimpleLibrarySystem
                 TbFeedback.Text = "You must be logged in to borrow a book.";
                 return;
             }
-
         } // End of BtnBorrow_Click method.
 
         // This method calls the allBooksBorrowedListDisplay method when the 'Show All Borrowed Books' button is 
         // clicked.
         private void BtnAllBorrowedBooks_Click(object sender, EventArgs e)
         {
-
             allBooksBorrowedListDisplay();
-
         } // End of BtnAllBorrowedBooks_Click method.
 
         // This is the method responsible for displaying the list of borrowed books.
         public void allBooksBorrowedListDisplay()
         {
-
             LbMain.Items.Clear();
 
             if (LibraryDataTracking.allBooksBorrowedList != null && LibraryDataTracking.allBooksBorrowedList.Count != 0)
@@ -312,23 +303,19 @@ namespace SimpleLibrarySystem
             {
                 TbFeedback.Text = "No books currently borrowed.";
             }
-
         } // End of allBooksBorrowedListDisplay method.
 
         // This method will call the userCurrentBorrowedBooksListDisplay method when the
         // user clicks the "My Currently Borrowed Books" button.
         private void BtnCurrentlyBorrowed_Click(object sender, EventArgs e)
         {
-
             userCurrentBorrowedBooksListDisplay();
-
         } // End of BtnCurrentlyBorrowed_Click method.
 
         // This method is responsible for displaying the current user's borrowed books
         // in the LbMain listbox.
         public void userCurrentBorrowedBooksListDisplay()
         {
-
             if (loggedInUserCheck())
             {
                 LbMain.Items.Clear();
@@ -352,22 +339,18 @@ namespace SimpleLibrarySystem
                 TbFeedback.Text = "No user currently logged in.";
                 return;
             }
-
         } // End of userCurrentBorrowedBooksListDisplay method.
 
 
         // This method 
         private void BtnReturn_Click(object sender, EventArgs e)
         {
-
             returnBorrowedBook();
-
         } // End of BtnReturn_Click method.
 
         // This method is responsible for 
         public void returnBorrowedBook()
         {
-
             if (loggedInUserCheck())
             {
                 if (currentUser.booksCheckedOut.Count > 0)
@@ -406,15 +389,12 @@ namespace SimpleLibrarySystem
                 TbFeedback.Text = "No user currently logged in.";
                 return;
             }
-
         } // End of returnBorrowedBook method.
 
         // This method is responsible for 
         private void BtnAllMembersWithBorrowed_Click(object sender, EventArgs e)
         {
-
             ShowAllMembersWithBorrowedBooksList();
-
         } // End of BtnAllMembersWithBorrowed_Click method.
 
         //
@@ -437,7 +417,6 @@ namespace SimpleLibrarySystem
                     }
                 }
             }
-
         } // End of ShowAllMembersWithBorrowedBooksList method.
 
 
