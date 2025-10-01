@@ -238,6 +238,8 @@ namespace SimpleLibrarySystem
             }
         } // End of BtnInfo_Click method.
 
+        // This method lets a logged in library member borrow a selected book. Members can borrow no more than three
+        // books at a time.
         private void BtnBorrow_Click(object sender, EventArgs e)
         {
             if (currentUser != null)
@@ -293,11 +295,11 @@ namespace SimpleLibrarySystem
 
             if (LibraryDataTracking.allBooksBorrowedList != null && LibraryDataTracking.allBooksBorrowedList.Count != 0)
             {
-                TbFeedback.Text = "Currently displaying the list of all books in the library.";
+                TbFeedback.Text = "Currently displaying the list of all borrowed books in the library.";
 
-                foreach (var borrowedBook in LibraryDataTracking.allBooksBorrowedList)
+                foreach (Books borrowedBook in LibraryDataTracking.allBooksBorrowedList)
                 {
-                    LbMain.Items.Add($"{borrowedBook.bookTitle} - Borrowed by: {borrowedBook.bookBorrowedBy}, Due: {borrowedBook.bookDueDate}");
+                    LbMain.Items.Add($"{borrowedBook.bookTitle} - Borrowed by: {borrowedBook.bookBorrowedBy.memberName}, Due: {borrowedBook.bookDueDate}");
                 }
             }
             else
@@ -365,7 +367,7 @@ namespace SimpleLibrarySystem
                             LibraryDataTracking.allBooksBorrowedList.Remove(returnCandidate);
                             returnCandidate.bookCheckedOutDate = "";
                             returnCandidate.bookDueDate = "";
-                            returnCandidate.bookBorrowedBy = "";
+                            returnCandidate.bookBorrowedBy = null;
                             userCurrentBorrowedBooksListDisplay();
                             TbFeedback.Text = $"{returnCandidate.bookTitle} has been returned successfully!";
                         }
@@ -470,7 +472,7 @@ namespace SimpleLibrarySystem
         public string bookISBN {  get; set; }
         public string bookCheckedOutDate { get; set; }
         public string bookDueDate { get; set; }
-        public object bookBorrowedBy { get; set; }
+        public LibraryMembers bookBorrowedBy { get; set; }
 
         /* This is the constructor that will allow us to create new instances
         *  of the Books class and assign values to the variables manually
