@@ -13,6 +13,7 @@
 using System;
 using System.DirectoryServices.ActiveDirectory;
 using System.Text;
+using System.Text.Json;
 using System.Text.RegularExpressions;
 
 
@@ -36,6 +37,7 @@ namespace SimpleLibrarySystem
         {
             PopulateData.populateLibraryMembers();
             PopulateData.populateBooks();
+            PopulateData.writeListsToFile();
             TbFeedback.Text = "Data populated!";
         } // End of SimpleLibrarySystemForm_Load method.
 
@@ -541,6 +543,16 @@ namespace SimpleLibrarySystem
             Books newBook6 = new Books(1006, "The Art of War", "Sun Tzu", "2020", "978-1-78404-202-8", "", "");
             LibraryDataTracking.allBooksList.Add(newBook6);
         } // End of populateBooks method.
+
+        // This is the method responsible for writing the populated lists to file.
+        public static void writeListsToFile()
+        {
+            string jsonMembers = JsonSerializer.Serialize(LibraryDataTracking.allMembersList);
+            File.WriteAllText("libraryMemberslist.json", jsonMembers);
+
+            string jsonBooks = JsonSerializer.Serialize(LibraryDataTracking.allBooksList);
+            File.WriteAllText("libraryBookslist.json", jsonBooks);
+        } // End of writeListsToFile method.
 
     } // End of PopulateData class.
 
