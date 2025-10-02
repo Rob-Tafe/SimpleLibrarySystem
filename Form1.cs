@@ -39,7 +39,6 @@ namespace SimpleLibrarySystem
             TbFeedback.Text = "Data populated!";
         } // End of SimpleLibrarySystemForm_Load method.
 
-
         // This variable indicates which library member is currently logged in, and who
         // all the methods will interact with.
         LibraryMembers currentUser;
@@ -65,7 +64,6 @@ namespace SimpleLibrarySystem
                 TbFeedback.Text = $"Error, {LbMain.SelectedItem} is not a valid user.";
             }
         } // End of userLogin method.
-
 
         // This method checks if there is a user logged in and returns a true boolean if 
         // there is a user logged in, and returns false if there isn't a user logged in.
