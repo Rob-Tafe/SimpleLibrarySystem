@@ -47,7 +47,7 @@ namespace SimpleLibrarySystem
         // End of login/out controller variables.
 
         // This method is responsible for calling the login/logout methods.
-        private void BtnLogInOut_Click(object sender, EventArgs e)
+        public void BtnLogInOut_Click(object sender, EventArgs e)
         {
             userLogInOut();
         } // End of BtnLogInOut_Click method.
@@ -110,7 +110,7 @@ namespace SimpleLibrarySystem
 
         // This method is responsible for calling the allBooksListDisplay method, which shows the
         // user a list of all the books in the library system.
-        private void BtnAllBooks_Click(object sender, EventArgs e)
+        public void BtnAllBooks_Click(object sender, EventArgs e)
         {
             allBooksListDisplay();
         } // End of BtnAllBooks_Click method.
@@ -134,12 +134,12 @@ namespace SimpleLibrarySystem
 
         // This is the search function that will use the value entered in the TbInput text box to
         // search through the list of books for the entered value.
-        private void BtnSearch_Click(object sender, EventArgs e)
+        public void BtnSearch_Click(object sender, EventArgs e)
         {
             TbFeedback.Clear();
             LbMain.Items.Clear();
 
-            string searchVal = TBInput.Text.ToLower().Trim();
+            string searchVal = TbInput.Text.ToLower().Trim();
             bool searchValFound = false;
             TbFeedback.Text = searchVal;
 
@@ -179,11 +179,12 @@ namespace SimpleLibrarySystem
             {
                 TbFeedback.Text = $"Search results for: {searchVal}";
             }
+
         } // End of BtnSearch_Click method.
 
         // This is the method that will display all information of an object the user has
         // selected in the listbox.
-        private void BtnInfo_Click(object sender, EventArgs e)
+        public void BtnInfo_Click(object sender, EventArgs e)
         {
             TbFeedback.Clear();
 
@@ -240,7 +241,7 @@ namespace SimpleLibrarySystem
 
         // This method lets a logged in library member borrow a selected book. Members can borrow no more than three
         // books at a time.
-        private void BtnBorrow_Click(object sender, EventArgs e)
+        public void BtnBorrow_Click(object sender, EventArgs e)
         {
             if (currentUser != null)
             {
@@ -283,7 +284,7 @@ namespace SimpleLibrarySystem
 
         // This method calls the allBooksBorrowedListDisplay method when the 'Show All Borrowed Books' button is 
         // clicked.
-        private void BtnAllBorrowedBooks_Click(object sender, EventArgs e)
+        public void BtnAllBorrowedBooks_Click(object sender, EventArgs e)
         {
             allBooksBorrowedListDisplay();
         } // End of BtnAllBorrowedBooks_Click method.

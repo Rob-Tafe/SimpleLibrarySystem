@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             LbMain = new ListBox();
-            TBInput = new TextBox();
+            TbInput = new TextBox();
             BtnSearch = new Button();
             BtnBorrow = new Button();
             BtnReturn = new Button();
@@ -52,12 +52,12 @@
             LbMain.Size = new Size(360, 289);
             LbMain.TabIndex = 0;
             // 
-            // TBInput
+            // TbInput
             // 
-            TBInput.Location = new Point(130, 15);
-            TBInput.Name = "TBInput";
-            TBInput.Size = new Size(254, 23);
-            TBInput.TabIndex = 1;
+            TbInput.Location = new Point(130, 15);
+            TbInput.Name = "TbInput";
+            TbInput.Size = new Size(254, 23);
+            TbInput.TabIndex = 1;
             // 
             // BtnSearch
             // 
@@ -183,7 +183,7 @@
             Controls.Add(BtnReturn);
             Controls.Add(BtnBorrow);
             Controls.Add(BtnSearch);
-            Controls.Add(TBInput);
+            Controls.Add(TbInput);
             Controls.Add(LbMain);
             Name = "SimpleLibrarySystemForm";
             Text = "Simple Library System";
@@ -193,19 +193,18 @@
         }
 
         #endregion
-
-        private ListBox LbMain;
-        private TextBox TBInput;
-        private Button BtnSearch;
-        private Button BtnBorrow;
-        private Button BtnReturn;
-        private Button BtnCurrentlyBorrowed;
-        private Button BtnAllBooks;
-        private Button BtnAllBorrowedBooks;
-        private Button BtnAllMembersList;
-        private Button BtnAllMembersWithBorrowed;
-        private TextBox TbFeedback;
-        private Button BtnInfo;
-        private Button BtnLogInOut;
+        public TextBox TbInput;
+        public ListBox LbMain;
+        public Button BtnSearch;
+        public TextBox TbFeedback;
+        public Button BtnBorrow;
+        public Button BtnReturn;
+        public Button BtnCurrentlyBorrowed;
+        public Button BtnAllBooks;
+        public Button BtnAllBorrowedBooks;
+        public Button BtnAllMembersList;
+        public Button BtnAllMembersWithBorrowed;
+        public Button BtnInfo;
+        public Button BtnLogInOut;
     }
 }
